@@ -3,209 +3,529 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIVERSITY APPLICATON FORM</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>University Admission Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-<style>
-        /* General page styling */
-body {
-  font-family: 'Times New Roman', Times, serif, sans-serif;
-  background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #eef6ff 0%, #dfeeff 100%);
+            color: #1d1d1d;
+        }
 
-/* Header styling */
-header {
-  background: #230479;
-  color: rgb(231, 209, 15);
-  text-align: center;
-  padding: 20px;
-}
+        header {
+            background: linear-gradient(135deg, #1f0f4d, #2a176d);
+            color: #f5d72d;
+            text-align: center;
+            padding: 30px 20px 20px;
+        }
 
-header h1 {
-  margin: 1;
-  font-size: 2.2em;
-}
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-header p {
-  font-style: italic;
-}
+        .logo {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            background: white;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
 
-/* Form container */
-main {
-  max-width: 700px;
-  margin: 30px auto;
-  background: #174661;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(108, 73, 73, 0.1);
-}
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
 
-/* Fieldset styling */
-fieldset {
-  border: 2px solid #004080;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #f9f9f9;
-}
+        .tagline {
+            margin-top: 10px;
+            font-size: 1.05rem;
+            letter-spacing: 0.04em;
+        }
 
-legend {
-  font-weight: bold;
-  color: #004080;
-}
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 18px 40px;
+        }
 
-/* Labels and inputs */
-label {
-  font-weight: bold;
-  color: #333;
-}
+        .form-box {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            box-shadow: 0 14px 35px rgba(23, 39, 74, 0.12);
+            padding: 30px;
+        }
 
-input, select {
-  width: 95%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1em;
-}
+        .progress-wrap {
+            margin-bottom: 25px;
+        }
 
-input[type="radio"] {
-  width: auto;
-  margin-right: 5px;
-}
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #3e4a5a;
+            font-weight: 600;
+        }
 
-/* Buttons */
-button {
-  background: #004080;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin: 10px 5px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background 0.3s ease;
-}
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e7edf5;
+            border-radius: 999px;
+            overflow: hidden;
+        }
 
-button:hover {
-  background: #0066cc;
-}
+        .progress-fill {
+            width: 33.33%;
+            height: 100%;
+            background: linear-gradient(90deg, #1d5da3, #44b4ff);
+            border-radius: inherit;
+            transition: width 0.3s ease;
+        }
 
-/* Extra flair */
-button[type="reset"] {
-  background: #cc0000;
-}
+        form {
+            margin-top: 20px;
+        }
 
-button[type="reset"]:hover {
-  background: #ff3333;
-}
+        .step {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
 
-  
+        .step.active {
+            display: block;
+        }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
+        .step h2 {
+            margin-top: 0;
+            color: #1b2d4d;
+            font-size: 1.7rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #c9d4e2;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: #fff;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2d7ff9;
+            box-shadow: 0 0 0 3px rgba(45, 127, 249, 0.12);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 4px;
+        }
+
+        .radio-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #2f3c4c;
+            font-weight: 500;
+        }
+
+        .radio-item input {
+            width: auto;
+            accent-color: #2147b8;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.96rem;
+        }
+
+        .checkbox-row input {
+            width: auto;
+            accent-color: #2147b8;
+        }
+
+        .button-row {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 14px 22px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #edf3ff;
+            color: #1c2d4d;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1b4db8, #2f76f1);
+            color: white;
+        }
+
+        .btn-danger {
+            background: #d53939;
+            color: white;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .summary-box {
+            background: #f5f9ff;
+            border: 1px solid #dfeaff;
+            border-radius: 12px;
+            padding: 18px;
+            color: #243247;
+        }
+
+        .summary-box ul {
+            margin: 15px 0 0;
+            padding-left: 18px;
+            line-height: 1.8;
+        }
+
+        .success-msg {
+            margin-top: 16px;
+            background: #eafaf1;
+            border: 1px solid #bfe8c9;
+            color: #1c6f3a;
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .success-msg.show {
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-box {
+                padding: 20px 16px;
+            }
+
+            .button-row {
+                flex-direction: column-reverse;
+                align-items: stretch;
+            }
+
+            .button-row button {
+                width: 100%;
+            }
+        }
     </style>
-
 </head>
-
 <body>
     <header>
-         <div class="header-container">
-    
-        
-         <img src="University Logo.png" alt="Konogo Odumase Senior High Logo" width="200" height="200">
-        <h1>University Admission Form</h1>
-        <p>Please Fill Up This Section Correctly</p>
+        <div class="header-container">
+            <img class="logo" src="University Logo.png" alt="University logo">
+            <h1>University Admission Form</h1>
+            <p class="tagline">Please complete the form carefully to begin your application journey.</p>
+        </div>
     </header>
 
     <main>
-        <form action="#" method="post">
-            <fieldset>
-                <legend><b>Personal Information</b></legend><br />
+        <div class="form-box">
+            <div class="progress-wrap">
+                <div class="progress-label">
+                    <span>Application Progress</span>
+                    <span id="progressText">1 / 3</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
 
-                <label for="Fullname">Full Name:</label><br />
-                <input type="text" id="fullname" placeholder="Fullname" required><br /><br>
+            <form id="admissionForm">
+                <section class="step active" data-step="1">
+                    <h2>Personal Information</h2>
+                    <div class="grid">
+                        <div class="field full">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                        </div>
 
-                <label for="email"> Email: </label><br />
-               
-                <input type="text" id="email" placeholder="Email"><br /><br />
-                <label for="dob">Date of Birth: </label><br />
-                <input type="date" id="dob" placeholder="Date of birth" required><br /><br />
-                <label>Gender:</label><br />
-                <input type="radio" name="gender" />Male<BR /><br />
-                <input type="radio" name="gender" />female<br /><br />
-                </fieldset>
+                        <div class="field">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                        </div>
 
-             <fieldset>
-                <legend><b>Position Held</b></legend><br>
-                <label for="Position Held In School">Positon Held in School:</label></b><br >
-          <select id="Position" name="Position" required>
-            <option value="">---Select Position--</option>
-             <option value="Head Prefect">Head Prefect</option>
-             <option value="Dining Hall Prefect">Dining Hall Prefect</option>
-             <option value="S.R.C President">S.R.C President</option>
-             <option value="S.R.C Vice president">S.R.C Vice president</option>
-             <option value="S.R.C General Secretary">S.R.C Secretary</option>
-             <option value="S.R.C Financial Secretary">S.R.C Financial Secretary</option>
-             <option value="Environmental Prefect">Environmental Prefect</option>
-             <option value="Cadet Commnader">Cadet Commnader</option>
-             <option value="Library Prefect">Library Prefect</option>
-             <option value="Protocol Prefect">Protocol Prefect</option>
-             <option value="House Prefect">House Prefect</option>
-             <option value=""
-             <option value="Others..">Others..</opiton>
-             <option value="No Position">NO Positon</option>
-             
-            </fieldset>
-        </select>
+                        <div class="field">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="0200000000" required>
+                        </div>
 
-            <br /><br/>
-            <fieldset>
-                <legend><b>Academic Information</b></legend>
-                <label for="program">Program Applying for:</label> <br />
-                <select id="program" name="program" required><br />
-                    <option value="">--Select Program--</option><br />
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Business Admin">Business Admin</option>
-                    <option value="Engineering">Engineering</option>
-                    <opiton value="Health Sciences">Health Sciences</opiton>
-                    <option value="Natural Sciences">Natural Sciences</option>
-                    <option value="Hospitality and Tourism">Hospitality and Tourism</option>
-                    <option value="Social Sciences">Social Sciences </option>
-                    <option value="Architecture">Architecture</option>
-                    <option value="Fine Arts">fine Arts</option>
-                    <option value="Law">Law</option>
-                    <option value="Communication and Media">Communication and Media</option>
-                    <option value="Medicine">Medicine</option>
-                    <option value="Diagnostic Medical Imaging">Diagnostic Medical Imaging</option>
-                     <option value="Civil Engineering">Civil Engineering</option>
-                    <option value="Mining Engineering">Mining Engineering</option>
-                    <option value="Biomedical Engineering">Biomedical Engineering</option>
-                    <option value="Diseases Control">Diseases Control</option>
-                    <option value="Infrormation Technology">Information Technology</option>
-                    <option value="Cybersecurity">Cybersecurity</option>
+                        <div class="field">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
 
-                    <br /><br />
+                        <div class="field full">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <label class="radio-item"><input type="radio" name="gender" value="Male" required> Male</label>
+                                <label class="radio-item"><input type="radio" name="gender" value="Female"> Female</label>
+                                <label class="radio-item"><input type="radio" name="gender" value="Other"> Other</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
+                <section class="step" data-step="2">
+                    <h2>Leadership & Academic Information</h2>
+                    <div class="grid">
+                        <div class="field full">
+                            <label for="position">Position Held in School</label>
+                            <select id="position" name="position" required>
+                                <option value="">-- Select position --</option>
+                                <option value="Head Prefect">Head Prefect</option>
+                                <option value="Dining Hall Prefect">Dining Hall Prefect</option>
+                                <option value="SRC President">SRC President</option>
+                                <option value="SRC Vice President">SRC Vice President</option>
+                                <option value="SRC General Secretary">SRC General Secretary</option>
+                                <option value="SRC Financial Secretary">SRC Financial Secretary</option>
+                                <option value="Environmental Prefect">Environmental Prefect</option>
+                                <option value="Cadet Commander">Cadet Commander</option>
+                                <option value="Library Prefect">Library Prefect</option>
+                                <option value="Protocol Prefect">Protocol Prefect</option>
+                                <option value="House Prefect">House Prefect</option>
+                                <option value="Other">Other</option>
+                                <option value="No Position">No Position</option>
+                            </select>
+                        </div>
 
+                        <div class="field full">
+                            <label for="program">Program Applying For</label>
+                            <select id="program" name="program" required>
+                                <option value="">-- Select program --</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Health Sciences">Health Sciences</option>
+                                <option value="Natural Sciences">Natural Sciences</option>
+                                <option value="Hospitality and Tourism">Hospitality and Tourism</option>
+                                <option value="Social Sciences">Social Sciences</option>
+                                <option value="Architecture">Architecture</option>
+                                <option value="Fine Arts">Fine Arts</option>
+                                <option value="Law">Law</option>
+                                <option value="Communication and Media">Communication and Media</option>
+                                <option value="Medicine">Medicine</option>
+                                <option value="Diagnostic Medical Imaging">Diagnostic Medical Imaging</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Mining Engineering">Mining Engineering</option>
+                                <option value="Biomedical Engineering">Biomedical Engineering</option>
+                                <option value="Disease Control">Disease Control</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Cybersecurity">Cybersecurity</option>
+                            </select>
+                        </div>
 
-                </select>
-                <br /><br />
-                <label for="bece">B.E.C.E Index Number:</label><br />
-                <input type="text" id="bece" name="bece" placeholder="BECE" required></input><br />
-                <br />
-                <label for="wassce">WASSCE Index Number:</label><br />
-                <input type="text" id="wassce" name="wassce" placeholder="WASSCE" required><br /><br />
+                        <div class="field">
+                            <label for="bece">BECE Index Number</label>
+                            <input type="text" id="bece" name="bece" placeholder="Enter BECE index number" required>
+                        </div>
 
-            </fieldset>
-            <BR>
-            <button type="submit">Submit Application</button><br />
-            <button type="reset">Clear</button>
+                        <div class="field">
+                            <label for="wassce">WASSCE Index Number</label>
+                            <input type="text" id="wassce" name="wassce" placeholder="Enter WASSCE index number" required>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="step" data-step="3">
+                    <h2>Review Your Application</h2>
+                    <div class="summary-box">
+                        <p>Please confirm the information below before submitting.</p>
+                        <ul id="summaryList">
+                            <li>Full name: --</li>
+                            <li>Email: --</li>
+                            <li>Program: --</li>
+                            <li>Position: --</li>
+                        </ul>
+                    </div>
+
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="confirm" required>
+                        <label for="confirm">I confirm that all details provided are correct.</label>
+                    </div>
+                </section>
+
+                <div class="button-row">
+                    <button type="button" class="btn-secondary" id="prevBtn">Back</button>
+                    <button type="button" class="btn-primary" id="nextBtn">Next</button>
+                    <button type="submit" class="btn-primary hidden" id="submitBtn">Submit Application</button>
+                    <button type="reset" class="btn-danger" id="resetBtn">Clear</button>
+                </div>
+
+                <div id="successMessage" class="success-msg" role="alert">
+                    Your application has been submitted successfully.
+                </div>
+            </form>
+        </div>
     </main>
+
+    <script>
+        const steps = Array.from(document.querySelectorAll('.step'));
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const summaryList = document.getElementById('summaryList');
+        const successMessage = document.getElementById('successMessage');
+        let currentStep = 0;
+
+        function updateSummary() {
+            const values = {
+                fullname: document.getElementById('fullname').value || '--',
+                email: document.getElementById('email').value || '--',
+                program: document.getElementById('program').value || '--',
+                position: document.getElementById('position').value || '--'
+            };
+
+            summaryList.innerHTML = `
+                <li>Full name: ${values.fullname}</li>
+                <li>Email: ${values.email}</li>
+                <li>Program: ${values.program}</li>
+                <li>Position: ${values.position}</li>
+            `;
+        }
+
+        function showStep(index) {
+            steps.forEach((step, i) => {
+                step.classList.toggle('active', i === index);
+            });
+
+            const isFirst = index === 0;
+            const isLast = index === steps.length - 1;
+
+            prevBtn.disabled = isFirst;
+            prevBtn.style.opacity = isFirst ? '0.5' : '1';
+            nextBtn.classList.toggle('hidden', isLast);
+            submitBtn.classList.toggle('hidden', !isLast);
+
+            const progressPercent = ((index + 1) / steps.length) * 100;
+            progressFill.style.width = `${progressPercent}%`;
+            progressText.textContent = `${index + 1} / ${steps.length}`;
+
+            if (isLast) {
+                updateSummary();
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const activeStep = steps[currentStep];
+            const requiredFields = activeStep.querySelectorAll('[required]');
+            let valid = true;
+
+            requiredFields.forEach((field) => {
+                if (!field.checkValidity()) {
+                    field.reportValidity();
+                    valid = false;
+                }
+            });
+
+            if (!valid) return;
+
+            if (currentStep < steps.length - 1) {
+                currentStep += 1;
+                showStep(currentStep);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep -= 1;
+                showStep(currentStep);
+            }
+        });
+
+        document.getElementById('admissionForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            successMessage.classList.add('show');
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            successMessage.classList.remove('show');
+            currentStep = 0;
+            showStep(currentStep);
+        });
+
+        document.querySelectorAll('input, select').forEach((field) => {
+            field.addEventListener('input', updateSummary);
+            field.addEventListener('change', updateSummary);
+        });
+
+        showStep(currentStep);
+    </script>
 </body>
-
-
-
 </html>
