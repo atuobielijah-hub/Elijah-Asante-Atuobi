@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIVERSITY APPLICATON FORM</title>
+    <link rel="stylesheet" href="css/style.css">
+
+<style>
+        /* General page styling */
+body {
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+  background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Header styling */
+header {
+  background: #230479;
+  color: rgb(231, 209, 15);
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 1;
+  font-size: 2.2em;
+}
+
+header p {
+  font-style: italic;
+}
+
+/* Form container */
+main {
+  max-width: 700px;
+  margin: 30px auto;
+  background: #174661;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(108, 73, 73, 0.1);
+}
+
+/* Fieldset styling */
+fieldset {
+  border: 2px solid #004080;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+}
+
+legend {
+  font-weight: bold;
+  color: #004080;
+}
+
+/* Labels and inputs */
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+input, select {
+  width: 95%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+input[type="radio"] {
+  width: auto;
+  margin-right: 5px;
+}
+
+/* Buttons */
+button {
+  background: #004080;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0066cc;
+}
+
+/* Extra flair */
+button[type="reset"] {
+  background: #cc0000;
+}
+
+button[type="reset"]:hover {
+  background: #ff3333;
+}
+
+  
+
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+         <div class="header-container">
+    
+        
+         <img src="University Logo.png" alt="Konogo Odumase Senior High Logo" width="200" height="200">
+        <h1>University Admission Form</h1>
+        <p>Please Fill Up This Section Correctly</p>
+    </header>
+
+    <main>
+        <form action="#" method="post">
+            <fieldset>
+                <legend><b>Personal Information</b></legend><br />
+
+                <label for="Fullname">Full Name:</label><br />
+                <input type="text" id="fullname" placeholder="Fullname" required><br /><br>
+
+                <label for="email"> Email: </label><br />
+               
+                <input type="text" id="email" placeholder="Email"><br /><br />
+                <label for="dob">Date of Birth: </label><br />
+                <input type="date" id="dob" placeholder="Date of birth" required><br /><br />
+                <label>Gender:</label><br />
+                <input type="radio" name="gender" />Male<BR /><br />
+                <input type="radio" name="gender" />female<br /><br />
+                </fieldset>
+
+             <fieldset>
+                <legend><b>Position Held</b></legend><br>
+                <label for="Position Held In School">Positon Held in School:</label></b><br >
+          <select id="Position" name="Position" required>
+            <option value="">---Select Position--</option>
+             <option value="Head Prefect">Head Prefect</option>
+             <option value="Dining Hall Prefect">Dining Hall Prefect</option>
+             <option value="S.R.C President">S.R.C President</option>
+             <option value="S.R.C Vice president">S.R.C Vice president</option>
+             <option value="S.R.C General Secretary">S.R.C Secretary</option>
+             <option value="S.R.C Financial Secretary">S.R.C Financial Secretary</option>
+             <option value="Environmental Prefect">Environmental Prefect</option>
+             <option value="Cadet Commnader">Cadet Commnader</option>
+             <option value="Library Prefect">Library Prefect</option>
+             <option value="Protocol Prefect">Protocol Prefect</option>
+             <option value="House Prefect">House Prefect</option>
+             <option value=""
+             <option value="Others..">Others..</opiton>
+             <option value="No Position">NO Positon</option>
+             
+            </fieldset>
+        </select>
+
+            <br /><br/>
+            <fieldset>
+                <legend><b>Academic Information</b></legend>
+                <label for="program">Program Applying for:</label> <br />
+                <select id="program" name="program" required><br />
+                    <option value="">--Select Program--</option><br />
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Business Admin">Business Admin</option>
+                    <option value="Engineering">Engineering</option>
+                    <opiton value="Health Sciences">Health Sciences</opiton>
+                    <option value="Natural Sciences">Natural Sciences</option>
+                    <option value="Hospitality and Tourism">Hospitality and Tourism</option>
+                    <option value="Social Sciences">Social Sciences </option>
+                    <option value="Architecture">Architecture</option>
+                    <option value="Fine Arts">fine Arts</option>
+                    <option value="Law">Law</option>
+                    <option value="Communication and Media">Communication and Media</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Diagnostic Medical Imaging">Diagnostic Medical Imaging</option>
+                     <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Mining Engineering">Mining Engineering</option>
+                    <option value="Biomedical Engineering">Biomedical Engineering</option>
+                    <option value="Diseases Control">Diseases Control</option>
+                    <option value="Infrormation Technology">Information Technology</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+
+                    <br /><br />
+
+
+
+                </select>
+                <br /><br />
+                <label for="bece">B.E.C.E Index Number:</label><br />
+                <input type="text" id="bece" name="bece" placeholder="BECE" required></input><br />
+                <br />
+                <label for="wassce">WASSCE Index Number:</label><br />
+                <input type="text" id="wassce" name="wassce" placeholder="WASSCE" required><br /><br />
+
+            </fieldset>
+            <BR>
+            <button type="submit">Submit Application</button><br />
+            <button type="reset">Clear</button>
+    </main>
+</body>
+
+
+
+</html>
